@@ -8,19 +8,19 @@ do
 		echo -e Git not install. Trying to install...
 		apt install -y git;
 	else
+
+
+		if [ -d ~/termux-env ]; then
+			echo removing old 'termux-env' dir
+			rm -rf ~/termux-env
+		fi
+
+		cd ~/
+		git clone https://github.com/manishwg/termux-env.git
+		chmod 775 ~/termux-env/setenv
+		bash ~/termux-env/setenv
 		break
 	fi
 done
 
-if [ -d ~/termux-env ]; then
-	echo removing old 'termux-env' dir
-	rm -rf ~/termux-env
-fi
-
-cd ~/
-git clone https://github.com/manishwg/termux-env.git
-chmod 775 ~/termux-env/setenv
-
 cd $cwd
-     
-bash ~/termux-env/setenv
